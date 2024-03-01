@@ -1,0 +1,112 @@
+.dataTables_filter {
+  margin-bottom: 20px;
+}
+
+.dataTables_paginate, .dataTables_info {
+  margin-top: 20px; 
+}
+
+.dataTables_wrapper .dt-buttons .buttons-excel {
+  background-color: black; 
+  color: white; 
+  border-color: black; 
+  border-radius: 25px;
+}
+.dataTables_wrapper .dt-buttons .buttons-excel:hover {
+  background-color: #333; 
+}
+
+.wrap {
+  padding: 20px;
+}
+
+.introContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+}
+
+#quiz-content {
+  padding-top: 40px;
+}
+
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin: auto;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #000;
+}
+
+a {
+  text-decoration: none;
+}
+
+.tabLinks {
+  font-size: 14px;
+}
+
+.tabLinks.active {
+  color: red; 
+}
+
+span {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.backBtn {
+  background-color: black;
+  color: #fff;
+  padding: 6px 10px;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+.tabLinkContainer,
+.redirectPage {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabLinkContainer {
+  padding: 10px;
+}
+
+.filter-by-students{
+  padding-left: 40px
+}
+
+.fiterLabel {
+  font-size: 14px; 
+  margin-right: 10px;
+}
+
+#apply-filter-btn {
+  margin-left: 10px; 
+  padding: 8px 12px; 
+  background-color: black; 
+  color: #fff; 
+  border: none; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  font-size: 12px;
+} 
+
+.tableContainer{
+  margin-top: 30px;
+}
+
+#studentTable {
+  padding-top: 30px;
+}
