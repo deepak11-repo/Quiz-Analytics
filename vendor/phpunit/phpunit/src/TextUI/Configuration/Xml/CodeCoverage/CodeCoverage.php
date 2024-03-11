@@ -9,10 +9,6 @@
  */
 namespace PHPUnit\TextUI\XmlConfiguration\CodeCoverage;
 
-use function count;
-use PHPUnit\TextUI\Configuration\Directory;
-use PHPUnit\TextUI\Configuration\FileCollection;
-use PHPUnit\TextUI\Configuration\FilterDirectoryCollection;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Clover;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Cobertura;
 use PHPUnit\TextUI\XmlConfiguration\CodeCoverage\Report\Crap4j;
@@ -27,32 +23,22 @@ use PHPUnit\TextUI\XmlConfiguration\Exception;
  *
  * @psalm-immutable
  */
-final class CodeCoverage
+final readonly class CodeCoverage
 {
-    private readonly ?Directory $cacheDirectory;
-    private readonly FilterDirectoryCollection $directories;
-    private readonly FileCollection $files;
-    private readonly FilterDirectoryCollection $excludeDirectories;
-    private readonly FileCollection $excludeFiles;
-    private readonly bool $pathCoverage;
-    private readonly bool $includeUncoveredFiles;
-    private readonly bool $ignoreDeprecatedCodeUnits;
-    private readonly bool $disableCodeCoverageIgnore;
-    private readonly ?Clover $clover;
-    private readonly ?Cobertura $cobertura;
-    private readonly ?Crap4j $crap4j;
-    private readonly ?Html $html;
-    private readonly ?Php $php;
-    private readonly ?Text $text;
-    private readonly ?Xml $xml;
+    private bool $pathCoverage;
+    private bool $includeUncoveredFiles;
+    private bool $ignoreDeprecatedCodeUnits;
+    private bool $disableCodeCoverageIgnore;
+    private ?Clover $clover;
+    private ?Cobertura $cobertura;
+    private ?Crap4j $crap4j;
+    private ?Html $html;
+    private ?Php $php;
+    private ?Text $text;
+    private ?Xml $xml;
 
-    public function __construct(?Directory $cacheDirectory, FilterDirectoryCollection $directories, FileCollection $files, FilterDirectoryCollection $excludeDirectories, FileCollection $excludeFiles, bool $pathCoverage, bool $includeUncoveredFiles, bool $ignoreDeprecatedCodeUnits, bool $disableCodeCoverageIgnore, ?Clover $clover, ?Cobertura $cobertura, ?Crap4j $crap4j, ?Html $html, ?Php $php, ?Text $text, ?Xml $xml)
+    public function __construct(bool $pathCoverage, bool $includeUncoveredFiles, bool $ignoreDeprecatedCodeUnits, bool $disableCodeCoverageIgnore, ?Clover $clover, ?Cobertura $cobertura, ?Crap4j $crap4j, ?Html $html, ?Php $php, ?Text $text, ?Xml $xml)
     {
-        $this->cacheDirectory            = $cacheDirectory;
-        $this->directories               = $directories;
-        $this->files                     = $files;
-        $this->excludeDirectories        = $excludeDirectories;
-        $this->excludeFiles              = $excludeFiles;
         $this->pathCoverage              = $pathCoverage;
         $this->includeUncoveredFiles     = $includeUncoveredFiles;
         $this->ignoreDeprecatedCodeUnits = $ignoreDeprecatedCodeUnits;
@@ -64,57 +50,6 @@ final class CodeCoverage
         $this->php                       = $php;
         $this->text                      = $text;
         $this->xml                       = $xml;
-    }
-
-    /**
-     * @psalm-assert-if-true !null $this->cacheDirectory
-     *
-     * @deprecated
-     */
-    public function hasCacheDirectory(): bool
-    {
-        return $this->cacheDirectory !== null;
-    }
-
-    /**
-     * @throws Exception
-     *
-     * @deprecated
-     */
-    public function cacheDirectory(): Directory
-    {
-        if (!$this->hasCacheDirectory()) {
-            throw new Exception(
-                'No cache directory has been configured'
-            );
-        }
-
-        return $this->cacheDirectory;
-    }
-
-    public function hasNonEmptyListOfFilesToBeIncludedInCodeCoverageReport(): bool
-    {
-        return count($this->directories) > 0 || count($this->files) > 0;
-    }
-
-    public function directories(): FilterDirectoryCollection
-    {
-        return $this->directories;
-    }
-
-    public function files(): FileCollection
-    {
-        return $this->files;
-    }
-
-    public function excludeDirectories(): FilterDirectoryCollection
-    {
-        return $this->excludeDirectories;
-    }
-
-    public function excludeFiles(): FileCollection
-    {
-        return $this->excludeFiles;
     }
 
     public function pathCoverage(): bool
@@ -152,7 +87,7 @@ final class CodeCoverage
     {
         if (!$this->hasClover()) {
             throw new Exception(
-                'Code Coverage report "Clover XML" has not been configured'
+                'Code Coverage report "Clover XML" has not been configured',
             );
         }
 
@@ -174,7 +109,7 @@ final class CodeCoverage
     {
         if (!$this->hasCobertura()) {
             throw new Exception(
-                'Code Coverage report "Cobertura XML" has not been configured'
+                'Code Coverage report "Cobertura XML" has not been configured',
             );
         }
 
@@ -196,7 +131,7 @@ final class CodeCoverage
     {
         if (!$this->hasCrap4j()) {
             throw new Exception(
-                'Code Coverage report "Crap4J" has not been configured'
+                'Code Coverage report "Crap4J" has not been configured',
             );
         }
 
@@ -218,7 +153,7 @@ final class CodeCoverage
     {
         if (!$this->hasHtml()) {
             throw new Exception(
-                'Code Coverage report "HTML" has not been configured'
+                'Code Coverage report "HTML" has not been configured',
             );
         }
 
@@ -240,7 +175,7 @@ final class CodeCoverage
     {
         if (!$this->hasPhp()) {
             throw new Exception(
-                'Code Coverage report "PHP" has not been configured'
+                'Code Coverage report "PHP" has not been configured',
             );
         }
 
@@ -262,7 +197,7 @@ final class CodeCoverage
     {
         if (!$this->hasText()) {
             throw new Exception(
-                'Code Coverage report "Text" has not been configured'
+                'Code Coverage report "Text" has not been configured',
             );
         }
 
@@ -284,7 +219,7 @@ final class CodeCoverage
     {
         if (!$this->hasXml()) {
             throw new Exception(
-                'Code Coverage report "XML" has not been configured'
+                'Code Coverage report "XML" has not been configured',
             );
         }
 

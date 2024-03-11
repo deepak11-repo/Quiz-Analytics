@@ -1,6 +1,18 @@
 {
+    "name": "deepak/custom",
+    "autoload": {
+        "psr-4": {
+            "Deepak\\Custom\\": "includes/admin",
+            "Deepak\\Test\\": "tests"
+        }
+    },
+    
+    "scripts": {
+        "test": "php vendor/bin/phpunit tests --testdox"
+    },
+
     "require-dev": {
-        "phpunit/phpunit": "10",
-        "yoast/phpunit-polyfills": "2.0"
+        "phpunit/phpunit": "^11.0"
     }
+    
 }

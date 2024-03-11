@@ -19,7 +19,7 @@ use PHPUnit\TextUI\XmlConfiguration\Generator;
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
-final class GenerateConfigurationCommand implements Command
+final readonly class GenerateConfigurationCommand implements Command
 {
     public function execute(): Result
     {
@@ -65,8 +65,8 @@ final class GenerateConfigurationCommand implements Command
                 $bootstrapScript,
                 $testsDirectory,
                 $src,
-                $cacheDirectory
-            )
+                $cacheDirectory,
+            ),
         );
 
         /* @noinspection MissingDirectorySeparatorInspection */
